@@ -4,7 +4,8 @@
 *.txt
 *.pdf
 *.json
-bureaucrat-
+bureaucrat
+form
 
 # Prerequisites
 *.d
