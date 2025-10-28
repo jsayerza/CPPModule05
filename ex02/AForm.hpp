@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.hpp                                           :+:      :+:    :+:   */
+/*   AForm.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsayerza <jsayerza@student.42barcelona.fr> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <string>
 # include <iostream>
@@ -22,28 +22,31 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
-	private:
+	// private:
+	protected:
 		std::string _name;
 		bool _signed;
 		int _gradeToSign;
 		int _gradeToExecute;
+		// std::string target;
 
 	public:
-		Form();
-		Form(const Form& other);
-		Form(std::string name, bool isSigned, int gradeToSign, int gradeToExecute);
-		~Form();
+		AForm();
+		AForm(const AForm& other);
+		AForm(std::string name, bool isSigned, int gradeToSign, int gradeToExecute);
+		virtual ~AForm();
 
-		Form& operator=(const Form& other);
+		AForm& operator=(const AForm& other);
 
 		std::string getName() const;
 		bool getSigned() const;
 		int getGradeToSign() const;
 		int getGradeToExecute() const;
 
-		bool beSigned(Bureaucrat& bureaucrat);
+		virtual bool beSigned(Bureaucrat const & bureaucrat);
+		virtual void execute(Bureaucrat const & executor) const;
 
 		class GradeTooLowException : public std::exception
 		{
@@ -53,8 +56,17 @@ class Form
 					return ("");
 				}
 		};
+
+		class UnsignedFormException : public std::exception
+		{
+			public:
+				virtual const char* what() const throw()
+				{
+					return ("Unsigned form. ");
+				}
+		};
 };
 
-std::ostream& operator<<(std::ostream& oStream, const Form& Form);
+std::ostream& operator<<(std::ostream& oStream, const AForm& AForm);
 
 #endif

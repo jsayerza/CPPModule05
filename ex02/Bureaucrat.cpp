@@ -64,7 +64,7 @@ void Bureaucrat::decrementGrade()
 	_grade++;
 }
 
-void Bureaucrat::signForm(Form& form)
+void Bureaucrat::signForm(AForm& form)
 {
 	try
 	{
@@ -78,6 +78,30 @@ void Bureaucrat::signForm(Form& form)
 		std::cerr << ") is too low to sign this form (" << form.getGradeToSign() << ")." << '\n';
 	}
 }
+
+void Bureaucrat::executeForm(AForm const & form) const
+{
+	try
+	{
+		form.execute(*this);
+		//executar!!!!!
+		std::cout << getName() << " executed " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << getName() << " couldn't execute " << form.getName();
+		if (!form.getSigned())
+		{
+			std::cerr << " because the form " << form.getName() << " is unsigned." << '\n';
+		}
+		else
+		{		
+			std::cerr << " because bureaucrat's grade (" << getGrade();
+			std::cerr << ") is too low to execute this form (" << form.getGradeToExecute() << ")." << '\n';
+		}	
+	}
+}
+
 
 std::ostream& operator<<(std::ostream& oStream, const Bureaucrat& bureaucrat)
 {

@@ -6,6 +6,7 @@
 *.json
 bureaucrat
 form
+aform
 
 # Prerequisites
 *.d
