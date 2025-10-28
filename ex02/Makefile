@@ -10,13 +10,17 @@ DEBUG_FLAGS = -g -fsanitize=address -fsanitize=undefined
 SRCS =		main.cpp \
 			Bureaucrat.cpp \
 			AForm.cpp \
-			ShrubberyCreationForm.cpp
+			ShrubberyCreationForm.cpp \
+			PresidentialPardonForm.cpp \
+			RobotomyRequestForm.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
 HEADERS =	Bureaucrat.hpp \
 			AForm.hpp \
-			ShrubberyCreationForm.hpp
+			ShrubberyCreationForm.hpp \
+			PresidentialPardonForm.hpp \
+			RobotomyRequestForm.hpp
 
 all: $(NAME)
 

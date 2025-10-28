@@ -78,7 +78,8 @@ void AForm::execute(Bureaucrat const & executor) const
 		throw GradeTooLowException();
 }
 
-std::ostream& operator<<(std::ostream& oStream, const AForm& AForm)
+
+std::ostream& operator<<(std::ostream& oStream, const AForm & AForm)
 {
 	oStream << "AForm " << AForm.getName() << ". Signed: " << AForm.getSigned();
 	oStream << ", Grade to be signed: " << AForm.getGradeToSign();

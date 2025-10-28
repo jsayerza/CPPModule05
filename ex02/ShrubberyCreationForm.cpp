@@ -23,12 +23,12 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target )
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
 	: AForm(other), _target(other._target)
 {
-	std::cout << "ShrubberyCreationForm " << _name << " default constructor called" << std:: endl;
+	std::cout << "ShrubberyCreationForm " << this->getName() << " default constructor called" << std:: endl;
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-	std::cout << "ShrubberyCreationForm " << _name << " destructor called" << std:: endl;
+	std::cout << "ShrubberyCreationForm " << this->getName() << " destructor called" << std:: endl;
 }
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
@@ -38,7 +38,7 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 		AForm::operator=(other);
 		_target = other._target;
 	}
-	std::cout << "ShrubberyCreationForm " << _name << " assignment operator constructor called" << std:: endl;
+	std::cout << "ShrubberyCreationForm " << this->getName() << " assignment operator constructor called" << std:: endl;
 	return (*this);
 }
 
@@ -48,9 +48,7 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	std::string filename = _target + "_shrubbery";
 	std::ofstream file(filename.c_str());
 	if (!file.is_open())
-	{
 		throw std::runtime_error("Couldn't create file");
-	}
 	file << "      ^^^\n";
 	file << "     ^^^^^\n";
 	file << "    ^^^^^^^\n";
@@ -58,7 +56,6 @@ void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 	file << "  ^^^^^^^^^^^\n";
 	file << "      |||\n";
 	file << "      |||\n";
-	file << "      |||\n";
+	file << "      |||" << std::endl;
 	file.close();
-	std::cout << executor.getName() << " executed " << this->getName() << std::endl;	
 }

@@ -17,20 +17,15 @@
 # include <iostream>
 # include <exception>
 
-// # define GRADE_HI 1
-// # define GRADE_LO 150
-
 class Bureaucrat;
 
 class AForm
 {
-	// private:
-	protected:
+	private:
 		std::string _name;
 		bool _signed;
 		int _gradeToSign;
 		int _gradeToExecute;
-		// std::string target;
 
 	public:
 		AForm();
@@ -53,7 +48,7 @@ class AForm
 			public:
 				virtual const char* what() const throw()
 				{
-					return ("");
+					return ("Grade too low. ");
 				}
 		};
 
@@ -67,6 +62,6 @@ class AForm
 		};
 };
 
-std::ostream& operator<<(std::ostream& oStream, const AForm& AForm);
+std::ostream& operator<<(std::ostream& oStream, const AForm & AForm);
 
 #endif
