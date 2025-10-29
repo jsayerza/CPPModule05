@@ -1,4 +1,4 @@
-NAME = aform
+NAME = intern
 
 CXX = c++
 # CXXFLAGS = -Wall -Wextra -Werror -Wshadow -Wno-shadow -std=c++98
@@ -12,7 +12,9 @@ SRCS =		main.cpp \
 			AForm.cpp \
 			ShrubberyCreationForm.cpp \
 			PresidentialPardonForm.cpp \
-			RobotomyRequestForm.cpp
+			RobotomyRequestForm.cpp \
+			Intern.cpp \
+			Tests.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -20,7 +22,9 @@ HEADERS =	Bureaucrat.hpp \
 			AForm.hpp \
 			ShrubberyCreationForm.hpp \
 			PresidentialPardonForm.hpp \
-			RobotomyRequestForm.hpp
+			RobotomyRequestForm.hpp \
+			Intern.hpp \
+			Tests.hpp
 
 all: $(NAME)
 
@@ -45,4 +49,4 @@ re: fclean all
 
 .PHONY: all clean fclean re debug
 
-# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./aform
+# valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./intern
